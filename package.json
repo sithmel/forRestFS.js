@@ -1,0 +1,29 @@
+{
+  "name": "forrestFS",
+  "version": "0.0.1",
+  "description": "A file system traversal",
+  "main": "./lib/index",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sithmel/forRestFS.js.git"
+  },
+  "keywords": [
+    "middleware",
+    "connect",
+    "express",
+    "router"
+  ],
+  "dependencies":{
+    "occamsrazor": "2.2.0"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+    
+  },
+  "author": "Maurizio Lupo (@sithmel)",
+  "license": "MIT"
+}

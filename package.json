@@ -17,7 +17,7 @@
     "router"
   ],
   "dependencies":{
-    "occamsrazor": "2.2.0"
+    "occamsrazor": "2.2.1"
   },
   "devDependencies": {
     "mocha": "*",

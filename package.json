@@ -17,7 +17,8 @@
     "router"
   ],
   "dependencies":{
-    "occamsrazor": "2.2.1"
+    "occamsrazor": "2.2.1",
+    "forrest": "git+https://github.com/sithmel/forRest.js.git"
   },
   "devDependencies": {
     "mocha": "*",

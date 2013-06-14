@@ -64,17 +64,15 @@ describe('filetraversal operations', function(){
     });
 
     it('returns object', function(){
-        t.get(function (err, obj){
-            obj.type.should.be.equal('file');
-            obj.path.should.be.equal('filetest');
-        
-        });
+        var obj = t.get();
+        obj.type.should.be.equal('file');
+        obj.path.should.be.equal('filetest');
         should.exist(t);
     });
 
     // cannot list
-    it('list', function(){
-        t.list(function (err, files){
+    it('query', function(){
+        t.query({}, function (err, files){
             should.exist(err);
         });
     });
@@ -103,12 +101,12 @@ describe('filetraversal operations', function(){
         });
     });
 
-    it('destroy', function(){
-        t.destroy(function (err){
-            var exists = fs.existsSync(filetest);
-            exists.should.be.false;
-        });
-    });
+//    it('destroy', function(){
+//        t.destroy(function (err){
+//            var exists = fs.existsSync(filetest);
+//            exists.should.be.false;
+//        });
+//    });
 
 
 });

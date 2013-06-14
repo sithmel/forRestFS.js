@@ -65,20 +65,19 @@ describe('dirtraversal operations', function(){
 
 
     it('returns object', function(){
-        t.get(function (err, obj){
-            obj.type.should.be.equal('directory');
-            obj.path.should.be.equal('root');
-        
-        });
+        var obj = t.get();
         should.exist(t);
+        obj.type.should.be.equal('directory');
+        obj.path.should.be.equal('root');
     });
 
-    it('list', function(){
-        t.list(function (err, files){
-            files.should.include('subdir');
-            files.should.include('subfile');
-            files.should.include('subfile.json');
-            files.should.have.length(3);
+    it('query', function(){
+        t.query({}, function (err, objs){
+            console.log(objs);
+            objs.should.include({ type: 'file', path: 'root/subfile' });
+//            files.should.include('subfile');
+//            files.should.include('subfile.json');
+//            files.should.have.length(3);
         });
     });
 
@@ -158,32 +157,15 @@ describe('dirtraversal operations', function(){
 
     });
 
-});
-
-
-describe('dirtraversal operations 2', function(){
-
-    var t = new dirTraversal(null, rootobj);
-
-    before(function(done){
-        rmtree(testpath);
-        fs.mkdirSync(testpath);
-        fs.mkdirSync(path.join(testpath, "root"));
-        done();
-    });
-
-    after(function(done){
-        rmtree(testpath);
-        done();
-    });
-
     it('destroy', function(){
-        t.destroy(function (err){
+        t.destroy('subfile', function (err){
             should.not.exist(err);
-            var exists = fs.existsSync(path.join(testpath, "root"));
+            var exists = fs.existsSync(path.join(testpath, "root", "subfile"));
             exists.should.be.false;
         });
     });
 
 });
+
+
 

@@ -73,11 +73,18 @@ describe('dirtraversal operations', function(){
 
     it('query', function(){
         t.query({}, function (err, objs){
-            console.log(objs);
-            objs.should.include({ type: 'file', path: 'root/subfile' });
-//            files.should.include('subfile');
-//            files.should.include('subfile.json');
-//            files.should.have.length(3);
+            // trasform to obj
+            var i, out = {};
+            for (i = 0; i < objs.length; i++){
+                out[objs[i].path] = objs[i].type;
+            }
+
+            objs.should.have.length(3);
+
+            out['root/subfile'].should.be.equal('file');
+            out['root/subfile.json'].should.be.equal('file');
+            out['root/subdir'].should.be.equal('directory');
+            
         });
     });
 

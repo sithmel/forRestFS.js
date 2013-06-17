@@ -159,7 +159,7 @@ describe('dirtraversal operations', function(){
 
         // json object
         t.traverse('subfile.json', function (err, obj){
-            obj.type.should.equal('json');
+            obj.type.should.equal('file');
         });
 
     });
